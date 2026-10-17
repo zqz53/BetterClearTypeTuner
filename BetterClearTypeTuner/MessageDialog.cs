@@ -349,25 +349,25 @@ namespace BetterClearTypeTuner
 			{
 				case MessageBoxButtons.OKCancel:
 					AddButton("OK", DialogResult.OK);
-					cancelButton = AddButton("Cancel", DialogResult.Cancel);
+					cancelButton = AddButton("キャンセル", DialogResult.Cancel);
 					break;
 				case MessageBoxButtons.AbortRetryIgnore:
-					AddButton("&Abort", DialogResult.Abort);
-					AddButton("&Retry", DialogResult.Retry);
-					AddButton("&Ignore", DialogResult.Ignore);
+					AddButton("中止(&A)", DialogResult.Abort);
+					AddButton("再試行(&R)", DialogResult.Retry);
+					AddButton("無視(&I)", DialogResult.Ignore);
 					break;
 				case MessageBoxButtons.YesNoCancel:
-					AddButton("&Yes", DialogResult.Yes);
-					AddButton("&No", DialogResult.No);
-					cancelButton = AddButton("Cancel", DialogResult.Cancel);
+					AddButton("はい(&Y)", DialogResult.Yes);
+					AddButton("いいえ(&N)", DialogResult.No);
+					cancelButton = AddButton("キャンセル", DialogResult.Cancel);
 					break;
 				case MessageBoxButtons.YesNo:
-					AddButton("&Yes", DialogResult.Yes);
-					AddButton("&No", DialogResult.No);
+					AddButton("はい(&Y)", DialogResult.Yes);
+					AddButton("いいえ(&N)", DialogResult.No);
 					break;
 				case MessageBoxButtons.RetryCancel:
-					AddButton("&Retry", DialogResult.Retry);
-					cancelButton = AddButton("Cancel", DialogResult.Cancel);
+					AddButton("再試行(&R)", DialogResult.Retry);
+					cancelButton = AddButton("キャンセル", DialogResult.Cancel);
 					break;
 				default:
 					// A MessageBox with only an OK button answers OK to Escape and to the close box.

@@ -124,13 +124,11 @@
     <value>133, 17</value>
   </metadata>
   <data name="btnRestoreDefaults.ToolTip" xml:space="preserve">
-    <value>Deletes the Avalon.Graphics registry keys and restores
-the stock Windows settings:
-* RGB subpixel antialiasing
-* GDI contrast 1200
-* DirectWrite contrast 1900
-* ClearType Level 100
-* Enhanced Contrast 50</value>
+    <value>Avalon.Graphics のレジストリキーを削除し、
+RGB のアンチエイリアスと GDI コントラスト 1200 に戻します。
+DirectWrite は独自の既定値を使用します。
+古い全ユーザー共通の設定が残っている場合は、
+その削除に管理者権限が必要です。</value>
   </data>
   <metadata name="fontDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>230, 17</value>

@@ -173,28 +173,27 @@ namespace BetterClearTypeTuner
 			// cbFontAntialiasing
 			//
 			this.cbFontAntialiasing.BackColor = System.Drawing.Color.Transparent;
-			this.cbFontAntialiasing.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.cbFontAntialiasing.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cbFontAntialiasing.Location = new System.Drawing.Point(15, 6);
 			this.cbFontAntialiasing.Margin = new System.Windows.Forms.Padding(4);
 			this.cbFontAntialiasing.Name = "cbFontAntialiasing";
 			this.cbFontAntialiasing.Size = new System.Drawing.Size(250, 25);
 			this.cbFontAntialiasing.TabIndex = 1;
-			this.cbFontAntialiasing.Text = "Enable Font Antialiasing";
-			this.toolTip1.SetToolTip(this.cbFontAntialiasing, "SystemParametersInfo: SPI_SETFONTSMOOTHING\r\nWith antialiasing off, every other se" +
-        "tting below is ignored,\r\nbecause text is drawn with hard pixel edges only.");
+			this.cbFontAntialiasing.Text = "文字のアンチエイリアスを有効にする";
+			this.toolTip1.SetToolTip(this.cbFontAntialiasing, "SystemParametersInfo: SPI_SETFONTSMOOTHING\r\n無効にすると文字の輪郭を滑らかにする処理が止まり、\r\n以下のアンチエイリアス設定は使われません。");
 			this.cbFontAntialiasing.UseVisualStyleBackColor = false;
 			this.cbFontAntialiasing.CheckedChanged += new System.EventHandler(this.ControlsChanged);
 			//
 			// lblBusy
 			//
 			this.lblBusy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.lblBusy.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblBusy.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblBusy.Location = new System.Drawing.Point(270, 5);
 			this.lblBusy.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblBusy.Name = "lblBusy";
 			this.lblBusy.Size = new System.Drawing.Size(145, 26);
 			this.lblBusy.TabIndex = 46;
-			this.lblBusy.Text = "Working…";
+			this.lblBusy.Text = "適用中…";
 			this.lblBusy.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.lblBusy.Visible = false;
 			//
@@ -212,7 +211,7 @@ namespace BetterClearTypeTuner
 			// rbBGR
 			//
 			this.rbBGR.BackColor = System.Drawing.Color.Transparent;
-			this.rbBGR.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.rbBGR.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.rbBGR.Location = new System.Drawing.Point(24, 60);
 			this.rbBGR.Margin = new System.Windows.Forms.Padding(4);
 			this.rbBGR.Name = "rbBGR";
@@ -220,15 +219,14 @@ namespace BetterClearTypeTuner
 			this.rbBGR.TabIndex = 2;
 			this.rbBGR.TabStop = true;
 			this.rbBGR.Text = "BGR (ClearType)";
-			this.toolTip1.SetToolTip(this.rbBGR, "ClearType subpixel antialiasing for displays whose subpixels\r\nare ordered blue, g" +
-        "reen, red from left to right.");
+			this.toolTip1.SetToolTip(this.rbBGR, "サブピクセルが左から青・緑・赤の順に並ぶ\r\nディスプレイ用の ClearType アンチエイリアスです。");
 			this.rbBGR.UseVisualStyleBackColor = false;
 			this.rbBGR.CheckedChanged += new System.EventHandler(this.ControlsChanged);
 			//
 			// rbRGB
 			//
 			this.rbRGB.BackColor = System.Drawing.Color.Transparent;
-			this.rbRGB.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.rbRGB.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.rbRGB.Location = new System.Drawing.Point(24, 31);
 			this.rbRGB.Margin = new System.Windows.Forms.Padding(4);
 			this.rbRGB.Name = "rbRGB";
@@ -236,37 +234,35 @@ namespace BetterClearTypeTuner
 			this.rbRGB.TabIndex = 1;
 			this.rbRGB.TabStop = true;
 			this.rbRGB.Text = "RGB (ClearType)";
-			this.toolTip1.SetToolTip(this.rbRGB, "ClearType subpixel antialiasing for displays whose subpixels\r\nare ordered red, gr" +
-        "een, blue from left to right.  This is by far\r\nthe most common layout.");
+			this.toolTip1.SetToolTip(this.rbRGB, "サブピクセルが左から赤・緑・青の順に並ぶ\r\nディスプレイ用の ClearType アンチエイリアスです。\r\n一般的な液晶ディスプレイで使われる配列です。");
 			this.rbRGB.UseVisualStyleBackColor = false;
 			this.rbRGB.CheckedChanged += new System.EventHandler(this.ControlsChanged);
 			//
 			// rbGrayscale
 			//
 			this.rbGrayscale.BackColor = System.Drawing.Color.Transparent;
-			this.rbGrayscale.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.rbGrayscale.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.rbGrayscale.Location = new System.Drawing.Point(24, 2);
 			this.rbGrayscale.Margin = new System.Windows.Forms.Padding(4);
 			this.rbGrayscale.Name = "rbGrayscale";
 			this.rbGrayscale.Size = new System.Drawing.Size(250, 25);
 			this.rbGrayscale.TabIndex = 0;
 			this.rbGrayscale.TabStop = true;
-			this.rbGrayscale.Text = "Grayscale";
-			this.toolTip1.SetToolTip(this.rbGrayscale, "SystemParametersInfo: SPI_SETFONTSMOOTHINGTYPE = Standard\r\nSmooths with shades of" +
-        " gray only, so there is no color fringing.");
+			this.rbGrayscale.Text = "グレースケール";
+			this.toolTip1.SetToolTip(this.rbGrayscale, "SystemParametersInfo: SPI_SETFONTSMOOTHINGTYPE = Standard\r\nグレーの濃淡だけで輪郭を滑らかにするため、色にじみがありません。");
 			this.rbGrayscale.UseVisualStyleBackColor = false;
 			this.rbGrayscale.CheckedChanged += new System.EventHandler(this.ControlsChanged);
 			//
 			// lblGdiHeader
 			//
 			this.lblGdiHeader.BackColor = System.Drawing.Color.Transparent;
-			this.lblGdiHeader.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblGdiHeader.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblGdiHeader.Location = new System.Drawing.Point(15, 126);
 			this.lblGdiHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblGdiHeader.Name = "lblGdiHeader";
 			this.lblGdiHeader.Size = new System.Drawing.Size(400, 20);
 			this.lblGdiHeader.TabIndex = 3;
-			this.lblGdiHeader.Text = "GDI  (this app, File Explorer, Chrome)";
+			this.lblGdiHeader.Text = "GDI（このアプリなど）";
 			this.lblGdiHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			//
 			// panelRuleGdi
@@ -281,19 +277,19 @@ namespace BetterClearTypeTuner
 			// lblGdiContrast
 			//
 			this.lblGdiContrast.BackColor = System.Drawing.Color.Transparent;
-			this.lblGdiContrast.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblGdiContrast.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblGdiContrast.Location = new System.Drawing.Point(15, 152);
 			this.lblGdiContrast.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblGdiContrast.Name = "lblGdiContrast";
 			this.lblGdiContrast.Size = new System.Drawing.Size(170, 30);
 			this.lblGdiContrast.TabIndex = 5;
-			this.lblGdiContrast.Text = "Contrast:";
+			this.lblGdiContrast.Text = "コントラスト:";
 			this.lblGdiContrast.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			//
 			// nudGdiContrast
 			//
 			this.nudGdiContrast.BackColor = System.Drawing.Color.White;
-			this.nudGdiContrast.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.nudGdiContrast.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.nudGdiContrast.ForeColor = System.Drawing.Color.Black;
 			this.nudGdiContrast.Increment = new decimal(new int[] {
             100,
@@ -326,7 +322,7 @@ namespace BetterClearTypeTuner
 			//
 			this.linkGdiContrast.AutoSize = true;
 			this.linkGdiContrast.BackColor = System.Drawing.Color.Transparent;
-			this.linkGdiContrast.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.linkGdiContrast.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.linkGdiContrast.Location = new System.Drawing.Point(383, 157);
 			this.linkGdiContrast.Name = "linkGdiContrast";
 			this.linkGdiContrast.Size = new System.Drawing.Size(23, 19);
@@ -338,7 +334,7 @@ namespace BetterClearTypeTuner
 			// lblGdiContrastRange
 			//
 			this.lblGdiContrastRange.BackColor = System.Drawing.Color.Transparent;
-			this.lblGdiContrastRange.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblGdiContrastRange.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblGdiContrastRange.Location = new System.Drawing.Point(261, 150);
 			this.lblGdiContrastRange.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblGdiContrastRange.Name = "lblGdiContrastRange";
@@ -350,13 +346,13 @@ namespace BetterClearTypeTuner
 			// lblDwHeader
 			//
 			this.lblDwHeader.BackColor = System.Drawing.Color.Transparent;
-			this.lblDwHeader.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblDwHeader.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblDwHeader.Location = new System.Drawing.Point(15, 190);
 			this.lblDwHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblDwHeader.Name = "lblDwHeader";
 			this.lblDwHeader.Size = new System.Drawing.Size(400, 20);
 			this.lblDwHeader.TabIndex = 9;
-			this.lblDwHeader.Text = "DirectWrite  (Firefox, Edge, WPF, Settings, WinUI)";
+			this.lblDwHeader.Text = "DirectWrite（Firefox、Edge、WPF、設定など）";
 			this.lblDwHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			//
 			// panelRuleDw
@@ -371,13 +367,13 @@ namespace BetterClearTypeTuner
 			// cbDwOverride
 			//
 			this.cbDwOverride.BackColor = System.Drawing.Color.Transparent;
-			this.cbDwOverride.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.cbDwOverride.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cbDwOverride.Location = new System.Drawing.Point(15, 216);
 			this.cbDwOverride.Margin = new System.Windows.Forms.Padding(4);
 			this.cbDwOverride.Name = "cbDwOverride";
 			this.cbDwOverride.Size = new System.Drawing.Size(360, 24);
 			this.cbDwOverride.TabIndex = 11;
-			this.cbDwOverride.Text = "Override DirectWrite defaults";
+			this.cbDwOverride.Text = "DirectWrite の既定値を上書きする";
 			this.cbDwOverride.UseVisualStyleBackColor = false;
 			this.cbDwOverride.CheckedChanged += new System.EventHandler(this.cbDwOverride_CheckedChanged);
 			//
@@ -385,7 +381,7 @@ namespace BetterClearTypeTuner
 			//
 			this.linkDwOverride.AutoSize = true;
 			this.linkDwOverride.BackColor = System.Drawing.Color.Transparent;
-			this.linkDwOverride.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.linkDwOverride.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.linkDwOverride.Location = new System.Drawing.Point(383, 218);
 			this.linkDwOverride.Name = "linkDwOverride";
 			this.linkDwOverride.Size = new System.Drawing.Size(23, 19);
@@ -397,19 +393,19 @@ namespace BetterClearTypeTuner
 			// lblDwContrast
 			//
 			this.lblDwContrast.BackColor = System.Drawing.Color.Transparent;
-			this.lblDwContrast.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblDwContrast.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblDwContrast.Location = new System.Drawing.Point(15, 246);
 			this.lblDwContrast.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblDwContrast.Name = "lblDwContrast";
 			this.lblDwContrast.Size = new System.Drawing.Size(170, 30);
 			this.lblDwContrast.TabIndex = 13;
-			this.lblDwContrast.Text = "Contrast (both paths):";
+			this.lblDwContrast.Text = "コントラスト（共通）:";
 			this.lblDwContrast.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			//
 			// nudDwContrast
 			//
 			this.nudDwContrast.BackColor = System.Drawing.Color.White;
-			this.nudDwContrast.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.nudDwContrast.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.nudDwContrast.ForeColor = System.Drawing.Color.Black;
 			this.nudDwContrast.Increment = new decimal(new int[] {
             100,
@@ -442,7 +438,7 @@ namespace BetterClearTypeTuner
 			//
 			this.linkDwContrast.AutoSize = true;
 			this.linkDwContrast.BackColor = System.Drawing.Color.Transparent;
-			this.linkDwContrast.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.linkDwContrast.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.linkDwContrast.Location = new System.Drawing.Point(383, 251);
 			this.linkDwContrast.Name = "linkDwContrast";
 			this.linkDwContrast.Size = new System.Drawing.Size(23, 19);
@@ -454,7 +450,7 @@ namespace BetterClearTypeTuner
 			// lblDwContrastRange
 			//
 			this.lblDwContrastRange.BackColor = System.Drawing.Color.Transparent;
-			this.lblDwContrastRange.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblDwContrastRange.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblDwContrastRange.Location = new System.Drawing.Point(261, 244);
 			this.lblDwContrastRange.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblDwContrastRange.Name = "lblDwContrastRange";
@@ -466,31 +462,31 @@ namespace BetterClearTypeTuner
 			// lblDwClearTypePath
 			//
 			this.lblDwClearTypePath.BackColor = System.Drawing.Color.Transparent;
-			this.lblDwClearTypePath.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblDwClearTypePath.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblDwClearTypePath.Location = new System.Drawing.Point(15, 280);
 			this.lblDwClearTypePath.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblDwClearTypePath.Name = "lblDwClearTypePath";
 			this.lblDwClearTypePath.Size = new System.Drawing.Size(400, 18);
 			this.lblDwClearTypePath.TabIndex = 17;
-			this.lblDwClearTypePath.Text = "ClearType path only  (Firefox, Edge, WPF)";
+			this.lblDwClearTypePath.Text = "ClearType 描画用（Firefox、Edge、WPF など）";
 			this.lblDwClearTypePath.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			//
 			// lblClearTypeLevel
 			//
 			this.lblClearTypeLevel.BackColor = System.Drawing.Color.Transparent;
-			this.lblClearTypeLevel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblClearTypeLevel.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblClearTypeLevel.Location = new System.Drawing.Point(27, 300);
 			this.lblClearTypeLevel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblClearTypeLevel.Name = "lblClearTypeLevel";
 			this.lblClearTypeLevel.Size = new System.Drawing.Size(158, 30);
 			this.lblClearTypeLevel.TabIndex = 18;
-			this.lblClearTypeLevel.Text = "ClearType Level:";
+			this.lblClearTypeLevel.Text = "ClearType 強度:";
 			this.lblClearTypeLevel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			//
 			// nudClearTypeLevel
 			//
 			this.nudClearTypeLevel.BackColor = System.Drawing.Color.White;
-			this.nudClearTypeLevel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.nudClearTypeLevel.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.nudClearTypeLevel.ForeColor = System.Drawing.Color.Black;
 			this.nudClearTypeLevel.Increment = new decimal(new int[] {
             10,
@@ -513,7 +509,7 @@ namespace BetterClearTypeTuner
 			//
 			this.linkClearTypeLevel.AutoSize = true;
 			this.linkClearTypeLevel.BackColor = System.Drawing.Color.Transparent;
-			this.linkClearTypeLevel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.linkClearTypeLevel.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.linkClearTypeLevel.Location = new System.Drawing.Point(383, 305);
 			this.linkClearTypeLevel.Name = "linkClearTypeLevel";
 			this.linkClearTypeLevel.Size = new System.Drawing.Size(23, 19);
@@ -525,7 +521,7 @@ namespace BetterClearTypeTuner
 			// lblClearTypeLevelRange
 			//
 			this.lblClearTypeLevelRange.BackColor = System.Drawing.Color.Transparent;
-			this.lblClearTypeLevelRange.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblClearTypeLevelRange.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblClearTypeLevelRange.Location = new System.Drawing.Point(261, 298);
 			this.lblClearTypeLevelRange.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblClearTypeLevelRange.Name = "lblClearTypeLevelRange";
@@ -537,19 +533,19 @@ namespace BetterClearTypeTuner
 			// lblEnhancedContrast
 			//
 			this.lblEnhancedContrast.BackColor = System.Drawing.Color.Transparent;
-			this.lblEnhancedContrast.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblEnhancedContrast.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblEnhancedContrast.Location = new System.Drawing.Point(27, 332);
 			this.lblEnhancedContrast.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblEnhancedContrast.Name = "lblEnhancedContrast";
 			this.lblEnhancedContrast.Size = new System.Drawing.Size(158, 30);
 			this.lblEnhancedContrast.TabIndex = 22;
-			this.lblEnhancedContrast.Text = "Enhanced Contrast:";
+			this.lblEnhancedContrast.Text = "コントラスト強調:";
 			this.lblEnhancedContrast.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			//
 			// nudEnhancedContrast
 			//
 			this.nudEnhancedContrast.BackColor = System.Drawing.Color.White;
-			this.nudEnhancedContrast.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.nudEnhancedContrast.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.nudEnhancedContrast.ForeColor = System.Drawing.Color.Black;
 			this.nudEnhancedContrast.Increment = new decimal(new int[] {
             10,
@@ -577,7 +573,7 @@ namespace BetterClearTypeTuner
 			//
 			this.linkEnhancedContrast.AutoSize = true;
 			this.linkEnhancedContrast.BackColor = System.Drawing.Color.Transparent;
-			this.linkEnhancedContrast.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.linkEnhancedContrast.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.linkEnhancedContrast.Location = new System.Drawing.Point(383, 337);
 			this.linkEnhancedContrast.Name = "linkEnhancedContrast";
 			this.linkEnhancedContrast.Size = new System.Drawing.Size(23, 19);
@@ -589,7 +585,7 @@ namespace BetterClearTypeTuner
 			// lblEnhancedContrastRange
 			//
 			this.lblEnhancedContrastRange.BackColor = System.Drawing.Color.Transparent;
-			this.lblEnhancedContrastRange.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblEnhancedContrastRange.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblEnhancedContrastRange.Location = new System.Drawing.Point(261, 330);
 			this.lblEnhancedContrastRange.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblEnhancedContrastRange.Name = "lblEnhancedContrastRange";
@@ -601,31 +597,31 @@ namespace BetterClearTypeTuner
 			// lblDwGrayscalePath
 			//
 			this.lblDwGrayscalePath.BackColor = System.Drawing.Color.Transparent;
-			this.lblDwGrayscalePath.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblDwGrayscalePath.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblDwGrayscalePath.Location = new System.Drawing.Point(15, 366);
 			this.lblDwGrayscalePath.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblDwGrayscalePath.Name = "lblDwGrayscalePath";
 			this.lblDwGrayscalePath.Size = new System.Drawing.Size(400, 18);
 			this.lblDwGrayscalePath.TabIndex = 26;
-			this.lblDwGrayscalePath.Text = "Grayscale path only  (Settings, WinUI, Store apps)";
+			this.lblDwGrayscalePath.Text = "グレースケール描画用（設定、WinUI など）";
 			this.lblDwGrayscalePath.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			//
 			// lblGrayscaleContrast
 			//
 			this.lblGrayscaleContrast.BackColor = System.Drawing.Color.Transparent;
-			this.lblGrayscaleContrast.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblGrayscaleContrast.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblGrayscaleContrast.Location = new System.Drawing.Point(27, 386);
 			this.lblGrayscaleContrast.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblGrayscaleContrast.Name = "lblGrayscaleContrast";
 			this.lblGrayscaleContrast.Size = new System.Drawing.Size(158, 30);
 			this.lblGrayscaleContrast.TabIndex = 27;
-			this.lblGrayscaleContrast.Text = "Enhanced Contrast:";
+			this.lblGrayscaleContrast.Text = "コントラスト強調:";
 			this.lblGrayscaleContrast.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			//
 			// nudGrayscaleContrast
 			//
 			this.nudGrayscaleContrast.BackColor = System.Drawing.Color.White;
-			this.nudGrayscaleContrast.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.nudGrayscaleContrast.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.nudGrayscaleContrast.ForeColor = System.Drawing.Color.Black;
 			this.nudGrayscaleContrast.Increment = new decimal(new int[] {
             10,
@@ -653,7 +649,7 @@ namespace BetterClearTypeTuner
 			//
 			this.linkGrayscaleContrast.AutoSize = true;
 			this.linkGrayscaleContrast.BackColor = System.Drawing.Color.Transparent;
-			this.linkGrayscaleContrast.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.linkGrayscaleContrast.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.linkGrayscaleContrast.Location = new System.Drawing.Point(383, 391);
 			this.linkGrayscaleContrast.Name = "linkGrayscaleContrast";
 			this.linkGrayscaleContrast.Size = new System.Drawing.Size(23, 19);
@@ -665,7 +661,7 @@ namespace BetterClearTypeTuner
 			// lblGrayscaleContrastRange
 			//
 			this.lblGrayscaleContrastRange.BackColor = System.Drawing.Color.Transparent;
-			this.lblGrayscaleContrastRange.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblGrayscaleContrastRange.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblGrayscaleContrastRange.Location = new System.Drawing.Point(261, 384);
 			this.lblGrayscaleContrastRange.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblGrayscaleContrastRange.Name = "lblGrayscaleContrastRange";
@@ -676,27 +672,26 @@ namespace BetterClearTypeTuner
 			//
 			// btnApply
 			//
-			this.btnApply.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnApply.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnApply.Location = new System.Drawing.Point(15, 424);
 			this.btnApply.Margin = new System.Windows.Forms.Padding(4);
 			this.btnApply.Name = "btnApply";
 			this.btnApply.Size = new System.Drawing.Size(110, 29);
 			this.btnApply.TabIndex = 31;
-			this.btnApply.Text = "Apply";
-			this.toolTip1.SetToolTip(this.btnApply, "Values are applied when you leave a box after typing in it,\r\nor when you click th" +
-        "is button.");
+			this.btnApply.Text = "適用(&A)";
+			this.toolTip1.SetToolTip(this.btnApply, "入力欄からフォーカスを移すか、このボタンを押すと、\r\n入力した値が適用されます。");
 			this.btnApply.UseVisualStyleBackColor = true;
 			this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
 			//
 			// btnRestoreDefaults
 			//
-			this.btnRestoreDefaults.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnRestoreDefaults.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnRestoreDefaults.Location = new System.Drawing.Point(133, 424);
 			this.btnRestoreDefaults.Margin = new System.Windows.Forms.Padding(4);
 			this.btnRestoreDefaults.Name = "btnRestoreDefaults";
 			this.btnRestoreDefaults.Size = new System.Drawing.Size(170, 29);
 			this.btnRestoreDefaults.TabIndex = 32;
-			this.btnRestoreDefaults.Text = "Restore Defaults";
+			this.btnRestoreDefaults.Text = "既定値に戻す(&R)";
 			this.toolTip1.SetToolTip(this.btnRestoreDefaults, resources.GetString("btnRestoreDefaults.ToolTip"));
 			this.btnRestoreDefaults.UseVisualStyleBackColor = true;
 			this.btnRestoreDefaults.Click += new System.EventHandler(this.BtnRestoreDefaults_Click);
@@ -705,26 +700,24 @@ namespace BetterClearTypeTuner
 			//
 			this.lblNotes.AutoEllipsis = true;
 			this.lblNotes.BackColor = System.Drawing.Color.Transparent;
-			this.lblNotes.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblNotes.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblNotes.Location = new System.Drawing.Point(15, 462);
 			this.lblNotes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblNotes.Name = "lblNotes";
 			this.lblNotes.Size = new System.Drawing.Size(400, 76);
 			this.lblNotes.TabIndex = 33;
-			this.lblNotes.Text = "Applications read these settings at startup, so restart them (or reboot) to see t" +
-    "he change everywhere.  All connected displays are affected; Windows has no worki" +
-    "ng per-monitor equivalent.";
+			this.lblNotes.Text = "設定は接続中のすべてのディスプレイに適用されます。\r\n他のアプリに反映するには、そのアプリを再起動してください。";
 			//
 			// lblWindowHeader
 			//
 			this.lblWindowHeader.BackColor = System.Drawing.Color.Transparent;
-			this.lblWindowHeader.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblWindowHeader.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblWindowHeader.Location = new System.Drawing.Point(15, 546);
 			this.lblWindowHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblWindowHeader.Name = "lblWindowHeader";
 			this.lblWindowHeader.Size = new System.Drawing.Size(400, 20);
 			this.lblWindowHeader.TabIndex = 34;
-			this.lblWindowHeader.Text = "This Window Only  (changes nothing on your computer)";
+			this.lblWindowHeader.Text = "この画面の表示（Windows の設定は変わりません）";
 			this.lblWindowHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			//
 			// panelRuleWindow
@@ -739,42 +732,40 @@ namespace BetterClearTypeTuner
 			// cbDarkmode
 			//
 			this.cbDarkmode.BackColor = System.Drawing.Color.Transparent;
-			this.cbDarkmode.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.cbDarkmode.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cbDarkmode.Location = new System.Drawing.Point(15, 574);
 			this.cbDarkmode.Margin = new System.Windows.Forms.Padding(4);
 			this.cbDarkmode.Name = "cbDarkmode";
 			this.cbDarkmode.Size = new System.Drawing.Size(280, 25);
 			this.cbDarkmode.TabIndex = 36;
-			this.cbDarkmode.Text = "Dark Mode";
-			this.toolTip1.SetToolTip(this.cbDarkmode, "Draws this window, and the samples in it, light on dark.\r\nIt does not change the " +
-        "Windows theme.");
+			this.cbDarkmode.Text = "ダークモード(&D)";
+			this.toolTip1.SetToolTip(this.cbDarkmode, "この画面とプレビューを暗い背景・明るい文字で表示します。\r\nWindows のテーマは変更しません。");
 			this.cbDarkmode.UseVisualStyleBackColor = false;
 			this.cbDarkmode.CheckedChanged += new System.EventHandler(this.cbDarkmode_CheckedChanged);
 			//
 			// btnChangeFont
 			//
-			this.btnChangeFont.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnChangeFont.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnChangeFont.Location = new System.Drawing.Point(15, 604);
 			this.btnChangeFont.Margin = new System.Windows.Forms.Padding(4);
 			this.btnChangeFont.Name = "btnChangeFont";
 			this.btnChangeFont.Size = new System.Drawing.Size(170, 29);
 			this.btnChangeFont.TabIndex = 37;
-			this.btnChangeFont.Text = "Change Sample Font";
-			this.toolTip1.SetToolTip(this.btnChangeFont, "Picks the font the samples are drawn in, for comparing typefaces.\r\nIt does not ch" +
-        "ange any Windows font setting.");
+			this.btnChangeFont.Text = "表示フォントを変更(&F)";
+			this.toolTip1.SetToolTip(this.btnChangeFont, "プレビューのフォントを変更して、書体ごとの見え方を比較します。\r\n日本語を含むフォントを選んでください。\r\nWindows や操作画面のフォントは変更しません。");
 			this.btnChangeFont.UseVisualStyleBackColor = true;
 			this.btnChangeFont.Click += new System.EventHandler(this.btnChangeFont_Click);
 			//
 			// lblNormalScaleHeader
 			//
 			this.lblNormalScaleHeader.BackColor = System.Drawing.Color.Transparent;
-			this.lblNormalScaleHeader.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblNormalScaleHeader.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblNormalScaleHeader.Location = new System.Drawing.Point(430, 6);
 			this.lblNormalScaleHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblNormalScaleHeader.Name = "lblNormalScaleHeader";
 			this.lblNormalScaleHeader.Size = new System.Drawing.Size(510, 20);
 			this.lblNormalScaleHeader.TabIndex = 38;
-			this.lblNormalScaleHeader.Text = "Normal Scale - all three rendering paths";
+			this.lblNormalScaleHeader.Text = "通常表示 — 3 種類の描画方式";
 			this.lblNormalScaleHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			//
 			// panelNormalScale
@@ -794,7 +785,7 @@ namespace BetterClearTypeTuner
 			// lblGdiSmallHeader
 			//
 			this.lblGdiSmallHeader.BackColor = System.Drawing.Color.Transparent;
-			this.lblGdiSmallHeader.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblGdiSmallHeader.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblGdiSmallHeader.Location = new System.Drawing.Point(0, 0);
 			this.lblGdiSmallHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblGdiSmallHeader.Name = "lblGdiSmallHeader";
@@ -820,50 +811,50 @@ namespace BetterClearTypeTuner
 			this.lblSample3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblSample3.BackColor = System.Drawing.Color.Transparent;
-			this.lblSample3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblSample3.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblSample3.Location = new System.Drawing.Point(1, 46);
 			this.lblSample3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblSample3.Name = "lblSample3";
 			this.lblSample3.Size = new System.Drawing.Size(503, 29);
 			this.lblSample3.TabIndex = 2;
-			this.lblSample3.Text = "Thequickbrownfoxjumpsoverthelazydog.";
+			this.lblSample3.Text = "日本語の表示を確認 あいうえお カタカナ ABC 0123";
 			//
 			// lblSample2
 			//
 			this.lblSample2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblSample2.BackColor = System.Drawing.Color.Transparent;
-			this.lblSample2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblSample2.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblSample2.Location = new System.Drawing.Point(1, 22);
 			this.lblSample2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblSample2.Name = "lblSample2";
 			this.lblSample2.Size = new System.Drawing.Size(503, 24);
 			this.lblSample2.TabIndex = 1;
-			this.lblSample2.Text = "Thequickbrownfoxjumpsoverthelazydog.";
+			this.lblSample2.Text = "日本語の表示を確認 あいうえお カタカナ ABC 0123";
 			//
 			// lblSample1
 			//
 			this.lblSample1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblSample1.BackColor = System.Drawing.Color.Transparent;
-			this.lblSample1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblSample1.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblSample1.Location = new System.Drawing.Point(1, 1);
 			this.lblSample1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblSample1.Name = "lblSample1";
 			this.lblSample1.Size = new System.Drawing.Size(503, 20);
 			this.lblSample1.TabIndex = 0;
-			this.lblSample1.Text = "The quick brown fox jumps over the lazy dog.";
+			this.lblSample1.Text = "日本語の表示を確認 あいうえお カタカナ ABC 0123";
 			//
 			// lblDwSmallHeader
 			//
 			this.lblDwSmallHeader.BackColor = System.Drawing.Color.Transparent;
-			this.lblDwSmallHeader.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblDwSmallHeader.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblDwSmallHeader.Location = new System.Drawing.Point(0, 100);
 			this.lblDwSmallHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblDwSmallHeader.Name = "lblDwSmallHeader";
 			this.lblDwSmallHeader.Size = new System.Drawing.Size(510, 18);
 			this.lblDwSmallHeader.TabIndex = 2;
-			this.lblDwSmallHeader.Text = "DirectWrite - ClearType path";
+			this.lblDwSmallHeader.Text = "DirectWrite — ClearType 描画";
 			//
 			// pbDwSmall
 			//
@@ -878,13 +869,13 @@ namespace BetterClearTypeTuner
 			// lblDwGraySmallHeader
 			//
 			this.lblDwGraySmallHeader.BackColor = System.Drawing.Color.Transparent;
-			this.lblDwGraySmallHeader.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblDwGraySmallHeader.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblDwGraySmallHeader.Location = new System.Drawing.Point(0, 200);
 			this.lblDwGraySmallHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblDwGraySmallHeader.Name = "lblDwGraySmallHeader";
 			this.lblDwGraySmallHeader.Size = new System.Drawing.Size(510, 18);
 			this.lblDwGraySmallHeader.TabIndex = 4;
-			this.lblDwGraySmallHeader.Text = "DirectWrite - grayscale path";
+			this.lblDwGraySmallHeader.Text = "DirectWrite — グレースケール描画";
 			//
 			// pbDwGraySmall
 			//
@@ -899,13 +890,13 @@ namespace BetterClearTypeTuner
 			// lblGdiZoomHeader
 			//
 			this.lblGdiZoomHeader.BackColor = System.Drawing.Color.Transparent;
-			this.lblGdiZoomHeader.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblGdiZoomHeader.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblGdiZoomHeader.Location = new System.Drawing.Point(952, 6);
 			this.lblGdiZoomHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblGdiZoomHeader.Name = "lblGdiZoomHeader";
 			this.lblGdiZoomHeader.Size = new System.Drawing.Size(510, 20);
 			this.lblGdiZoomHeader.TabIndex = 40;
-			this.lblGdiZoomHeader.Text = "400% - GDI  ·  Windows drew this, from the settings now in effect.";
+			this.lblGdiZoomHeader.Text = "400% — GDI（現在の Windows 設定で描画）";
 			this.lblGdiZoomHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			//
 			// pbZoomed
@@ -921,13 +912,13 @@ namespace BetterClearTypeTuner
 			// lblDwZoomHeader
 			//
 			this.lblDwZoomHeader.BackColor = System.Drawing.Color.Transparent;
-			this.lblDwZoomHeader.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblDwZoomHeader.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblDwZoomHeader.Location = new System.Drawing.Point(430, 342);
 			this.lblDwZoomHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblDwZoomHeader.Name = "lblDwZoomHeader";
 			this.lblDwZoomHeader.Size = new System.Drawing.Size(510, 20);
 			this.lblDwZoomHeader.TabIndex = 42;
-			this.lblDwZoomHeader.Text = "400% - DirectWrite, ClearType path  ·  drawn here; other apps need a restart.";
+			this.lblDwZoomHeader.Text = "400% — DirectWrite / ClearType（他のアプリは再起動が必要）";
 			this.lblDwZoomHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			//
 			// pbDwZoomed
@@ -943,13 +934,13 @@ namespace BetterClearTypeTuner
 			// lblDwGrayZoomHeader
 			//
 			this.lblDwGrayZoomHeader.BackColor = System.Drawing.Color.Transparent;
-			this.lblDwGrayZoomHeader.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblDwGrayZoomHeader.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblDwGrayZoomHeader.Location = new System.Drawing.Point(952, 342);
 			this.lblDwGrayZoomHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblDwGrayZoomHeader.Name = "lblDwGrayZoomHeader";
 			this.lblDwGrayZoomHeader.Size = new System.Drawing.Size(510, 20);
 			this.lblDwGrayZoomHeader.TabIndex = 44;
-			this.lblDwGrayZoomHeader.Text = "400% - DirectWrite, grayscale path  ·  drawn here; other apps need a restart.";
+			this.lblDwGrayZoomHeader.Text = "400% — DirectWrite / グレースケール（他のアプリは再起動が必要）";
 			this.lblDwGrayZoomHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			//
 			// pbDwGrayZoomed
@@ -964,13 +955,13 @@ namespace BetterClearTypeTuner
 			//
 			// fontDialog1
 			//
-			this.fontDialog1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+			this.fontDialog1.Font = new System.Drawing.Font("Meiryo UI", 8.25F);
 			//
 			// status
 			//
 			this.status.BackColor = System.Drawing.Color.Transparent;
 			this.status.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.status.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.status.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.status.Location = new System.Drawing.Point(0, 681);
 			this.status.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.status.Name = "status";
@@ -998,12 +989,12 @@ namespace BetterClearTypeTuner
 			this.Controls.Add(this.panelContent);
 			this.Controls.Add(this.panelBottomBorder);
 			this.Controls.Add(this.status);
-			this.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+			this.Font = new System.Drawing.Font("Meiryo UI", 8.25F);
 			this.Margin = new System.Windows.Forms.Padding(4);
 			this.MinimumSize = new System.Drawing.Size(520, 313);
 			this.Name = "MainForm";
 			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-			this.Text = "Better ClearType Tuner";
+			this.Text = "Better ClearType Tuner 日本語版";
 			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.DpiChanged += new System.Windows.Forms.DpiChangedEventHandler(this.MainForm_DpiChanged);
 			this.panelContent.ResumeLayout(false);

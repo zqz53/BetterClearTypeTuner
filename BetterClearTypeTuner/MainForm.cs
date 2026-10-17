@@ -739,7 +739,7 @@ namespace BetterClearTypeTuner
 			BeginBusy();
 			try
 			{
-				foreach (Control c in fontableControls)
+				foreach (Control c in new Control[] { lblSample1, lblSample2, lblSample3 })
 				{
 					c.Font = new Font(fontDialog1.Font.Name, c.Font.Size, c.Font.Style, c.Font.Unit);
 				}
@@ -1038,9 +1038,7 @@ namespace BetterClearTypeTuner
 			{
 				// Administrator rights are not what is missing, so restarting again would only earn
 				// the same refusal.  Something else owns the key, such as a group policy.
-				ReportRegistryFailure("Unable to change all registry values.  While your change may have "
-					+ "worked, some values could not be written or removed even with administrator "
-					+ "permission.  Something other than permissions is holding them, such as a group policy.");
+				ReportRegistryFailure("一部のレジストリ値を変更できませんでした。変更の一部は適用された可能性がありますが、管理者権限でも書き込み・削除できない値が残っています。グループポリシーなど、権限以外の制限がないか確認してください。");
 				return false;
 			}
 			if (elevationRefused)
@@ -1070,15 +1068,10 @@ namespace BetterClearTypeTuner
 			elevationRefused = true;
 			MessageDialog.Show(this,
 				(result == ElevationResult.Refused
-					? "Administrator permission is needed to remove text rendering settings that apply to every user of this computer, and it was not granted."
-					: "This application was unable to restart itself as an administrator: " + error)
-				+ "\r\n\r\nYour own settings have been changed successfully.  What is left behind is a "
-				+ "machine-wide copy under HKEY_LOCAL_MACHINE, written by an older version of this "
-				+ "program or by another tuner.  It does not affect how text looks for you, because "
-				+ "your own settings take precedence over it, but it will keep applying to any other "
-				+ "user of this computer who has none of their own.  To clear it out, run Better "
-				+ "ClearType Tuner as an administrator.",
-				"Administrator permission required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+					? "この PC の全ユーザーに適用される文字描画設定を削除するには、管理者権限が必要です。今回は許可されませんでした。"
+					: "管理者として再起動できませんでした: " + error)
+				+ "\r\n\r\n現在のユーザーの設定は変更されました。残っているのは、旧版または別の調整ツールが HKEY_LOCAL_MACHINE に作成した、全ユーザー共通の設定です。現在のユーザーの設定が優先されるため、このユーザーの文字表示には影響しません。ただし、個別の設定がない他のユーザーには引き続き適用されます。削除するには Better ClearType Tuner を管理者として実行してください。",
+				"管理者権限が必要です", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			return false;
 		}
 
@@ -1152,17 +1145,17 @@ namespace BetterClearTypeTuner
 
 				// Says that the DirectWrite figures which follow are the ones DirectWrite fell back
 				// to rather than ones anybody chose, so that they are not read as settings in force.
-				string dwSource = avalonKeysExist ? "DirectWrite" : "DirectWrite defaults:";
+				string dwSource = avalonKeysExist ? "DirectWrite" : "DirectWrite 既定値:";
 				// Update status text
 				if (!aaEnabled)
-					status.Text = "Font Antialiasing is disabled.";
+					status.Text = "文字のアンチエイリアスは無効です。";
 				else
-					status.Text = (smoothingType == FontSmoothingType.ClearType ? orientation.ToString() : "Grayscale")
-						+ "  ·  GDI contrast " + gdiContrast
-						+ "  ·  " + dwSource + " contrast " + gammaLevel
-						+ ", ClearType Level " + clearTypeLevel
-						+ ", enhanced contrast " + enhancedContrastLevel
-						+ ", grayscale " + grayscaleContrastLevel;
+					status.Text = (smoothingType == FontSmoothingType.ClearType ? orientation.ToString() : "グレースケール")
+						+ "  ·  GDI コントラスト " + gdiContrast
+						+ "  ·  " + dwSource + " コントラスト " + gammaLevel
+						+ "、ClearType 強度 " + clearTypeLevel
+						+ "、コントラスト強調 " + enhancedContrastLevel
+						+ "、グレースケール強調 " + grayscaleContrastLevel;
 
 				// Snapshot the sample text and render it zoomed-in
 				CopyZoomedSnapshot();
@@ -1491,7 +1484,7 @@ namespace BetterClearTypeTuner
 		{
 			SetImage(zoomed, null);
 			SetImage(small, null);
-			header.Text = "Preview unavailable: " + (message ?? "unknown error");
+			header.Text = "プレビューを表示できません: " + (message ?? "原因不明のエラー");
 		}
 
 		/// <summary>Swaps in a new image and disposes the one it replaces.</summary>
@@ -1647,145 +1640,87 @@ namespace BetterClearTypeTuner
 		#endregion
 
 		#region Per-setting help
-		/// <summary>
-		/// Note appended to every DirectWrite setting, which the preview applies live but other
-		/// applications only read once.
-		/// </summary>
 		private const string DirectWriteRestartNote =
-			"The DirectWrite previews update immediately.  Applications read this value when they "
-			+ "start, so they have to be restarted to pick it up.";
+			"DirectWrite のプレビューにはすぐに反映されます。他のアプリは起動時に設定を読み込むため、反映するにはそのアプリを再起動してください。";
 
-		/// <summary>
-		/// The one thing worth understanding about the DirectWrite settings, appended to each of the
-		/// three that only one of the two paths reads.
-		/// </summary>
 		private const string DirectWritePathNote =
-			"DirectWrite rasterizes glyphs in one of two ways, and each application picks for itself "
-			+ "rather than being told by the antialiasing mode above:\r\n"
+			"DirectWrite には 2 種類の文字描画方式があり、各アプリが方式を選びます。画面上部のアンチエイリアス設定だけで決まるわけではありません。\r\n"
 			+ "\r\n"
-			+ "  ClearType path - computes coverage separately for the red, green and blue subpixels. "
-			+ "Firefox, Edge, WPF and most applications that draw into a window of their own.\r\n"
+			+ "ClearType 描画: 赤・緑・青のサブピクセルごとに文字の輪郭を計算します。Firefox、Edge、WPF などで使われます。\r\n"
 			+ "\r\n"
-			+ "  Grayscale path - computes one coverage value per pixel.  The Settings app, WinUI and "
-			+ "Store apps, whose text is drawn onto composition surfaces that may be transparent, "
-			+ "transformed or animated, and so cannot carry per-subpixel coverage.\r\n"
+			+ "グレースケール描画: ピクセル単位で輪郭を計算します。Windows の「設定」、WinUI、ストアアプリなどで使われます。透明化・変形・アニメーションが可能な合成面では、サブピクセル単位の処理が適さないためです。\r\n"
 			+ "\r\n"
-			+ "That is why both are previewed at once, and why a setting one path ignores is still "
-			+ "worth setting: something on this computer is almost certainly using the other path.";
+			+ "両方のプレビューを比較して、どの方式に設定が効くかを確認してください。アプリの実装によって設定の扱いは異なります。";
 
 		private const string HelpGdiContrast =
-			"GDI contrast - SystemParametersInfo, SPI_SETFONTSMOOTHINGCONTRAST\r\n"
-			+ "Range 1000 to 2200, default 1200.  Higher numbers give lighter text.\r\n"
+			"GDI コントラスト — SystemParametersInfo / SPI_SETFONTSMOOTHINGCONTRAST\r\n"
+			+ "範囲: 1000～2200、既定値: 1200。値を大きくすると文字が薄くなります。\r\n"
 			+ "\r\n"
-			+ "GDI reads this only while it is drawing ClearType.  That is normally decided by the "
-			+ "antialiasing mode above, but an application can ask for ClearType for a particular "
-			+ "font regardless of it, so this is left adjustable in grayscale mode too.\r\n"
+			+ "GDI の ClearType 描画で使われます。通常は画面上部のアンチエイリアス方式に従いますが、アプリ側で特定のフォントに ClearType を指定する場合もあるため、グレースケール選択時も調整できます。\r\n"
 			+ "\r\n"
-			+ "DirectWrite applications ignore this value entirely; they have their own contrast "
-			+ "settings below.";
+			+ "DirectWrite を使うアプリには影響しません。そちらは DirectWrite のコントラストで調整してください。";
 
 		private const string HelpDwOverride =
-			"Override DirectWrite defaults - HKCU\\" + AvalonKeyPath + "\r\n"
+			"DirectWrite の既定値を上書きする — HKCU\\Software\\Microsoft\\Avalon.Graphics\r\n"
 			+ "\r\n"
-			+ "A clean Windows installation has no Avalon.Graphics registry key at all, and "
-			+ "DirectWrite falls back to settings of its own.  Apps like Firefox may also override "
-			+ "with their own different defaults. Clear this checkbox to return to that "
-			+ "state: the key is removed and the settings below become "
-			+ "read-only, showing what DirectWrite falls back to rather than anything chosen here.\r\n"
+			+ "Windows の初期状態では Avalon.Graphics キーがなく、DirectWrite 独自の既定値が使われます。Firefox など、アプリ独自の既定値を使う場合もあります。チェックを外すとキーが削除され、下の項目は読み取り専用になり、DirectWrite API から取得した既定値を表示します。\r\n"
 			+ "\r\n"
-			+ "These settings are written for your Windows account only, which is why changing them "
-			+ "needs no administrator permission.  DirectWrite reads a per-user value in preference "
-			+ "to a machine-wide one, and this program writes the complete set, so there is nothing "
-			+ "a machine-wide copy could add.  Clearing this checkbox will ask for administrator "
-			+ "permission only if it finds a machine-wide key to remove, left by an older version of "
-			+ "this program or by another tuner.\r\n"
+			+ "設定は現在の Windows ユーザーに保存されるため、通常は管理者権限が不要です。ユーザー別の値は全ユーザー共通の値より優先されます。旧版や別のツールによる全ユーザー共通のキーが残っている場合のみ、削除時に管理者権限を求めます。\r\n"
 			+ "\r\n"
-			+ "Tick it to write the key and take control of those three settings.  They start at the "
-			+ "values that were already in effect, so turning the override on does not by itself "
-			+ "change how anything looks.\r\n"
+			+ "チェックを入れると、現在使われている値を基に各項目を調整できます。チェックを入れるだけでは見た目は変わりません。\r\n"
 			+ "\r\n"
-			+ "It is deliberately all or nothing.  Which of these values DirectWrite honours is "
-			+ "inconsistent enough that a half-written key produces rendering that matches neither "
-			+ "the defaults nor the settings asked for.\r\n"
+			+ "一部の値だけを書くと既定値とも指定値とも異なる描画になる場合があるため、関連する値は一括で保存します。\r\n"
 			+ "\r\n"
-			+ "The RGB and BGR buttons above keep working either way.  With the key absent "
-			+ "DirectWrite takes the subpixel order from the Windows font smoothing setting, and "
-			+ "with it present the PixelStructure value written here says the same thing.\r\n"
-			+ "\r\n"
+			+ "上部の RGB / BGR は、チェックの有無にかかわらず使用できます。キーがない場合は Windows のフォントスムージング設定から配列を取得し、キーがある場合は同じ配列を PixelStructure に保存します。"
+			+ "\r\n\r\n"
 			+ DirectWriteRestartNote;
 
 		private const string HelpDwContrast =
-			"DirectWrite contrast - HKCU\\" + AvalonKeyPath + "\\<display>\\GammaLevel\r\n"
-			+ "Range 1000 to 2200.  Higher numbers give lighter text.\r\n"
+			"DirectWrite コントラスト — HKCU\\Software\\Microsoft\\Avalon.Graphics\\<display>\\GammaLevel\r\n"
+			+ "範囲: 1000～2200。値を大きくすると文字が薄くなります。\r\n"
 			+ "\r\n"
-			+ "This is DirectWrite's gamma, and the one DirectWrite setting that both rasterization "
-			+ "paths read, so it is the setting to reach for when you want every DirectWrite "
-			+ "application to change together.  GDI ignores it.\r\n"
+			+ "DirectWrite のガンマ値です。ClearType とグレースケールの両方に作用するため、両方式をまとめて調整したい場合に使います。GDI には影響しません。\r\n"
 			+ "\r\n"
-			+ "Microsoft documents the default as 1900, but that is not what DirectWrite uses.  "
-			+ "Asked what it resolves to with this value absent, DirectWrite answers with a gamma of "
-			+ "1.8 - a GammaLevel of 1800 - so that is what this box shows while the override above "
-			+ "is off, and what it starts from when the override is turned on.\r\n"
-			+ "\r\n"
+			+ "Microsoft の資料では既定値は 1900 とされていますが、上流プロジェクトの調査では、キーがない場合に DirectWrite API が返す値はガンマ 1.8（GammaLevel 1800）でした。このアプリでは固定値を仮定せず、API から取得した値を上書き無効時に表示し、有効化時の初期値にも使用します。"
+			+ "\r\n\r\n"
 			+ DirectWriteRestartNote;
 
 		private const string HelpClearTypeLevel =
-			"ClearType Level - HKCU\\" + AvalonKeyPath + "\\<display>\\ClearTypeLevel\r\n"
-			+ "Range 0 to 100, default 100.  ClearType path only.\r\n"
+			"ClearType 強度 — HKCU\\Software\\Microsoft\\Avalon.Graphics\\<display>\\ClearTypeLevel\r\n"
+			+ "範囲: 0～100、既定値: 100。ClearType 描画にのみ作用します。\r\n"
 			+ "\r\n"
-			+ "How much of the antialiasing is done with the display's individual color subpixels "
-			+ "rather than with whole gray pixels.  Lower it to reduce color fringing at the cost of "
-			+ "sharpness.  This is the same setting as the color-intensity step of the Windows "
-			+ "ClearType tuner.  GDI ignores it.\r\n"
+			+ "色サブピクセルをどの程度使って輪郭を滑らかにするかを指定します。値を下げると色にじみが減る一方、鮮明さも低下します。Windows 標準の ClearType 調整にある色の強度と同じ設定です。GDI には影響しません。\r\n"
 			+ "\r\n"
-			+ "While Grayscale is selected at the top of this window, this setting does nothing at "
-			+ "all - measurably nothing, not merely little.  That mode writes a PixelStructure of "
-			+ "flat, and with no subpixel structure to blend across there is nothing for a ClearType "
-			+ "level to scale: rendering at 0 and at 100 comes out pixel for pixel identical.  It is "
-			+ "left adjustable anyway, because the value is still written and still read by anything "
-			+ "that pairs it with a subpixel geometry of its own.\r\n"
+			+ "上部でグレースケールを選ぶと PixelStructure が flat になり、このプレビューでは 0 と 100 の描画結果に差がなくなります。ただし、独自のサブピクセル配列を使うアプリがこの値を読む場合があるため、値は保存・調整できます。\r\n"
 			+ "\r\n"
-			+ "Turning it down to zero is also not the same as grayscale rendering, however much it "
-			+ "may look like it in the ClearType preview.  Zero collapses the ClearType output "
-			+ "instead of switching paths, so what applies is still the ClearType contrast below and "
-			+ "not the grayscale one.  Set the two previews side by side and you can see they do not "
-			+ "match.\r\n"
-			+ "\r\n"
-			+ DirectWritePathNote + "\r\n"
-			+ "\r\n"
+			+ "強度 0 は、グレースケール描画に切り替える操作ではありません。描画方式は ClearType のままなので、適用されるのも ClearType 用のコントラスト強調です。両プレビューを比較して違いを確認してください。"
+			+ "\r\n\r\n"
+			+ DirectWritePathNote
+			+ "\r\n\r\n"
 			+ DirectWriteRestartNote;
 
 		private const string HelpEnhancedContrast =
-			"Enhanced Contrast - HKCU\\" + AvalonKeyPath + "\\<display>\\EnhancedContrastLevel\r\n"
-			+ "Range 0 to 400, default 50.  Higher numbers give darker text.  ClearType path only.\r\n"
+			"コントラスト強調 — HKCU\\Software\\Microsoft\\Avalon.Graphics\\<display>\\EnhancedContrastLevel\r\n"
+			+ "範囲: 0～400、既定値: 50。値を大きくすると文字が濃くなります。ClearType 描画にのみ作用します。\r\n"
 			+ "\r\n"
-			+ "A second contrast control, applied on top of the DirectWrite contrast above and "
-			+ "pulling in the opposite direction.  GDI ignores it, and DirectWrite discards values "
-			+ "above 400.  Some applications also ignore it while still respecting the other "
-			+ "DirectWrite settings.\r\n"
+			+ "共通の DirectWrite コントラストに重ねて作用する、逆方向の調整項目です。GDI には影響しません。DirectWrite は 400 を超える値を無視します。また、他の DirectWrite 設定は反映しても、この値は無視するアプリがあります。\r\n"
 			+ "\r\n"
-			+ "This is the ClearType path's copy of the setting.  Grayscale rasterization has its "
-			+ "own, below, and reads that one instead.\r\n"
-			+ "\r\n"
-			+ DirectWritePathNote + "\r\n"
-			+ "\r\n"
+			+ "グレースケール描画では、下の専用のコントラスト強調が使われます。"
+			+ "\r\n\r\n"
+			+ DirectWritePathNote
+			+ "\r\n\r\n"
 			+ DirectWriteRestartNote;
 
 		private const string HelpGrayscaleContrast =
-			"Grayscale Enhanced Contrast - HKCU\\" + AvalonKeyPath + "\\<display>\\GrayscaleEnhancedContrastLevel\r\n"
-			+ "Range 0 to 400, default 100.  Higher numbers give darker text.  Grayscale path only.\r\n"
+			"グレースケールのコントラスト強調 — HKCU\\Software\\Microsoft\\Avalon.Graphics\\<display>\\GrayscaleEnhancedContrastLevel\r\n"
+			+ "範囲: 0～400、既定値: 100。値を大きくすると文字が濃くなります。グレースケール描画にのみ作用します。\r\n"
 			+ "\r\n"
-			+ "The same control as Enhanced Contrast above, kept as a separate value because "
-			+ "grayscale rasterization is a separate code path with its own contrast.  Setting one "
-			+ "does nothing to the other.\r\n"
+			+ "上の ClearType 用とは独立した値です。一方を変更しても、もう一方には影響しません。\r\n"
 			+ "\r\n"
-			+ "This is the setting that reaches the Windows Settings app and other WinUI and Store "
-			+ "applications, which rasterize grayscale no matter which antialiasing mode is selected "
-			+ "at the top of this window.  Watch the grayscale preview while you change it; the "
-			+ "ClearType preview will not move.\r\n"
-			+ "\r\n"
-			+ DirectWritePathNote + "\r\n"
-			+ "\r\n"
+			+ "Windows の「設定」、WinUI、ストアアプリなど、上部の選択にかかわらずグレースケールで描画するアプリ向けの設定です。調整中はグレースケールのプレビューを確認してください。ClearType のプレビューは変化しません。"
+			+ "\r\n\r\n"
+			+ DirectWritePathNote
+			+ "\r\n\r\n"
 			+ DirectWriteRestartNote;
 
 		/// <summary>
@@ -1800,32 +1735,32 @@ namespace BetterClearTypeTuner
 
 		private void linkGdiContrast_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
-			ShowHelp(linkGdiContrast, "About GDI Contrast", HelpGdiContrast);
+			ShowHelp(linkGdiContrast, "GDI コントラストについて", HelpGdiContrast);
 		}
 
 		private void linkDwOverride_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
-			ShowHelp(linkDwOverride, "About Overriding DirectWrite Defaults", HelpDwOverride);
+			ShowHelp(linkDwOverride, "DirectWrite の既定値の上書きについて", HelpDwOverride);
 		}
 
 		private void linkDwContrast_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
-			ShowHelp(linkDwContrast, "About DirectWrite Contrast", HelpDwContrast);
+			ShowHelp(linkDwContrast, "DirectWrite コントラストについて", HelpDwContrast);
 		}
 
 		private void linkClearTypeLevel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
-			ShowHelp(linkClearTypeLevel, "About ClearType Level", HelpClearTypeLevel);
+			ShowHelp(linkClearTypeLevel, "ClearType 強度について", HelpClearTypeLevel);
 		}
 
 		private void linkEnhancedContrast_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
-			ShowHelp(linkEnhancedContrast, "About Enhanced Contrast", HelpEnhancedContrast);
+			ShowHelp(linkEnhancedContrast, "コントラスト強調について", HelpEnhancedContrast);
 		}
 
 		private void linkGrayscaleContrast_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
-			ShowHelp(linkGrayscaleContrast, "About Grayscale Enhanced Contrast", HelpGrayscaleContrast);
+			ShowHelp(linkGrayscaleContrast, "グレースケールのコントラスト強調について", HelpGrayscaleContrast);
 		}
 		#endregion
 	}

@@ -86,7 +86,7 @@ namespace BetterClearTypeTuner
 			this.menuCopy.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
 			this.menuCopy.ShowShortcutKeys = true;
 			this.menuCopy.Size = new System.Drawing.Size(133, 22);
-			this.menuCopy.Text = "&Copy";
+			this.menuCopy.Text = "コピー(&C)";
 			this.menuCopy.Click += new System.EventHandler(this.menuCopy_Click);
 			//
 			// menuSelectAll
@@ -95,7 +95,7 @@ namespace BetterClearTypeTuner
 			this.menuSelectAll.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
 			this.menuSelectAll.ShowShortcutKeys = true;
 			this.menuSelectAll.Size = new System.Drawing.Size(133, 22);
-			this.menuSelectAll.Text = "Select &All";
+			this.menuSelectAll.Text = "すべて選択(&A)";
 			this.menuSelectAll.Click += new System.EventHandler(this.menuSelectAll_Click);
 			//
 			// panelButtons

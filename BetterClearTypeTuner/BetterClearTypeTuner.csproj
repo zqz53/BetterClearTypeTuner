@@ -41,8 +41,8 @@
 	  "BetterClearTypeTuner-ARM64" in the ARM64 build's Explorer file properties.
 	-->
 	<PropertyGroup>
-		<Version>1.7</Version>
-		<AssemblyTitle>BetterClearTypeTuner</AssemblyTitle>
+		<Version>1.7.0.1</Version>
+		<AssemblyTitle>BetterClearTypeTuner 日本語版</AssemblyTitle>
 		<Product>BetterClearTypeTuner</Product>
 		<!-- Nothing here is packed into a NuGet package, but PackageId still has to be set explicitly,
 		     because it defaults to $(AssemblyName) and this project gives each target framework a
@@ -97,7 +97,7 @@
 	</ItemGroup>
 
 	<!--
-	  After a Release build, package the shippable files into Releases\BetterClearTypeTuner STAGING.zip.
+	  After a Release build, package the shippable files into Releases\BetterClearTypeTuner-ja STAGING.zip.
 
 	  "STAGING" stands where the version number goes in a real release zip, so rebuilding can never
 	  overwrite an already published one.  Rename the zip by hand when it is ready to publish.
@@ -109,15 +109,17 @@
 		<PropertyGroup>
 			<StagingZipContentDir>$(BaseIntermediateOutputPath)$(Configuration)\staging-zip\</StagingZipContentDir>
 			<ReleasesDir>$(MSBuildProjectDirectory)\..\Releases\</ReleasesDir>
-			<StagingZipPath>$(ReleasesDir)BetterClearTypeTuner STAGING.zip</StagingZipPath>
+			<StagingZipPath>$(ReleasesDir)BetterClearTypeTuner-ja STAGING.zip</StagingZipPath>
 		</PropertyGroup>
 		<ItemGroup>
 			<StagingZipFile Include="$(OutputPath)BetterClearTypeTuner.exe" />
 			<StagingZipFile Include="$(OutputPath)BetterClearTypeTuner.exe.config" />
 			<StagingZipFile Include="$(OutputPath)BetterClearTypeTuner-ARM64.exe" />
 			<StagingZipFile Include="$(OutputPath)BetterClearTypeTuner-ARM64.exe.config" />
+			<StagingZipFile Include="$(MSBuildProjectDirectory)\..\LICENSE" />
+			<StagingZipFile Include="$(MSBuildProjectDirectory)\..\README.ja.md" />
 		</ItemGroup>
-		<!-- Stage the files in a scratch folder first so the zip contains exactly these four and no .pdb. -->
+		<!-- Stage the files in a scratch folder first so the zip contains the executables, configs, license, and Japanese guide, but no .pdb. -->
 		<RemoveDir Directories="$(StagingZipContentDir)" />
 		<Copy SourceFiles="@(StagingZipFile)" DestinationFolder="$(StagingZipContentDir)" />
 		<MakeDir Directories="$(ReleasesDir)" />

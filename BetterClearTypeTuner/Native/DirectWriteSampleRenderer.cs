@@ -117,7 +117,7 @@ namespace BetterClearTypeTuner.Native
 				int hr = DWrite.DWriteCreateFactory(DWRITE_FACTORY_TYPE.SHARED, DWrite.IID_IDWriteFactory, out factoryObj);
 				if (hr != 0 || factoryObj == null)
 				{
-					LastError = "DWriteCreateFactory failed (0x" + hr.ToString("X8") + ")";
+					LastError = "DWriteCreateFactory に失敗しました (0x" + hr.ToString("X8") + ")";
 					return;
 				}
 				factory = (IDWriteFactory)factoryObj;
@@ -137,7 +137,7 @@ namespace BetterClearTypeTuner.Native
 				hr = factory.GetGdiInterop(out gdiInterop);
 				if (hr != 0 || gdiInterop == null)
 				{
-					LastError = "IDWriteFactory::GetGdiInterop failed (0x" + hr.ToString("X8") + ")";
+					LastError = "IDWriteFactory::GetGdiInterop に失敗しました (0x" + hr.ToString("X8") + ")";
 					gdiInterop = null;
 				}
 			}
@@ -166,7 +166,7 @@ namespace BetterClearTypeTuner.Native
 				return null;
 			if (pipeline == DwPipeline.Grayscale && factory1 == null)
 			{
-				LastError = "Grayscale rasterization needs DirectWrite 1.1, which this version of Windows does not have.";
+				LastError = "グレースケール描画に必要な DirectWrite 1.1 を、この Windows はサポートしていません。";
 				return null;
 			}
 			if (fonts == null || texts == null || fonts.Length != texts.Length || fonts.Length == 0)
@@ -193,14 +193,14 @@ namespace BetterClearTypeTuner.Native
 				int hr = gdiInterop.CreateFontFromLOGFONT(ref logFont, out dwFont);
 				if (hr != 0 || dwFont == null)
 				{
-					LastError = "This font is not available to DirectWrite (0x" + hr.ToString("X8") + ")";
+					LastError = "DirectWrite でこのフォントを使用できません (0x" + hr.ToString("X8") + ")";
 					return null;
 				}
 
 				hr = dwFont.CreateFontFace(out fontFace);
 				if (hr != 0 || fontFace == null)
 				{
-					LastError = "CreateFontFace failed (0x" + hr.ToString("X8") + ")";
+					LastError = "CreateFontFace に失敗しました (0x" + hr.ToString("X8") + ")";
 					return null;
 				}
 
@@ -208,7 +208,7 @@ namespace BetterClearTypeTuner.Native
 				fontFace.GetMetrics(out fontMetrics);
 				if (fontMetrics.designUnitsPerEm == 0)
 				{
-					LastError = "Font reported no design units per em.";
+					LastError = "フォントから em あたりのデザイン単位数を取得できませんでした。";
 					return null;
 				}
 
@@ -219,7 +219,7 @@ namespace BetterClearTypeTuner.Native
 				hr = gdiInterop.CreateBitmapRenderTarget(IntPtr.Zero, (uint)width, (uint)height, out target);
 				if (hr != 0 || target == null)
 				{
-					LastError = "CreateBitmapRenderTarget failed (0x" + hr.ToString("X8") + ")";
+					LastError = "CreateBitmapRenderTarget に失敗しました (0x" + hr.ToString("X8") + ")";
 					return null;
 				}
 				if (pipeline == DwPipeline.Grayscale)
@@ -232,13 +232,13 @@ namespace BetterClearTypeTuner.Native
 					IDWriteBitmapRenderTarget1 target1 = target as IDWriteBitmapRenderTarget1;
 					if (target1 == null)
 					{
-						LastError = "This render target does not support grayscale antialiasing.";
+						LastError = "この描画先はグレースケールのアンチエイリアスに対応していません。";
 						return null;
 					}
 					hr = target1.SetTextAntialiasMode(DWRITE_TEXT_ANTIALIAS_MODE.GRAYSCALE);
 					if (hr != 0)
 					{
-						LastError = "SetTextAntialiasMode failed (0x" + hr.ToString("X8") + ")";
+						LastError = "SetTextAntialiasMode に失敗しました (0x" + hr.ToString("X8") + ")";
 						return null;
 					}
 				}
@@ -248,7 +248,7 @@ namespace BetterClearTypeTuner.Native
 				IntPtr hdc = target.GetMemoryDC();
 				if (hdc == IntPtr.Zero)
 				{
-					LastError = "GetMemoryDC returned null.";
+					LastError = "GetMemoryDC が null を返しました。";
 					return null;
 				}
 
@@ -408,7 +408,7 @@ namespace BetterClearTypeTuner.Native
 					0f, DWRITE_PIXEL_GEOMETRY.FLAT, mode, out grayscaleResult);
 				if (hr != 0 || grayscaleResult == null)
 				{
-					LastError = "IDWriteFactory1::CreateCustomRenderingParams failed (0x" + hr.ToString("X8") + ")";
+					LastError = "IDWriteFactory1::CreateCustomRenderingParams に失敗しました (0x" + hr.ToString("X8") + ")";
 					return null;
 				}
 				// The same object under the interface DrawGlyphRun takes, not a second one.
@@ -422,7 +422,7 @@ namespace BetterClearTypeTuner.Native
 			hr = factory.CreateCustomRenderingParams(gamma, enhancedContrast, clearTypeLevel, geometry, mode, out result);
 			if (hr != 0 || result == null)
 			{
-				LastError = "CreateCustomRenderingParams failed (0x" + hr.ToString("X8") + ")";
+				LastError = "CreateCustomRenderingParams に失敗しました (0x" + hr.ToString("X8") + ")";
 				return null;
 			}
 			return result;

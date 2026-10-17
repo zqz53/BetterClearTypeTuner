@@ -1,4 +1,11 @@
 # Better ClearType Tuner
+
+## 日本語 UI 版
+
+この作業ブランチは **Better ClearType Tuner の非公式日本語版**です。
+操作画面・ヘルプ・通知を日本語化し、日本語のプレビューを追加しています。
+使い方とビルド手順は [README.ja.md](README.ja.md) を参照してください。
+以下は上流プロジェクトの説明です。以下にある上流の Releases リンクは英語版を指します。
 A better way to configure ClearType font smoothing on Windows.
 
 ## Features
